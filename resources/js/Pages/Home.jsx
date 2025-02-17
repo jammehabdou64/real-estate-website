@@ -130,7 +130,7 @@ const HomePage = () => {
         className="relative bg-black
       "
       >
-        <div class="absolute inset-0 bg-[url('/images/hero-img.jpeg')] bg-cover bg-center opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('/images/hero-img.jpeg')] bg-cover bg-center opacity-30"></div>
 
         <div className="max-container">
           <div className="relative  py-12 md:py-24">
