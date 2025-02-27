@@ -42,7 +42,6 @@ const modalReducer = (state, action) => {
   }
 };
 
-// Create Context
 const ModalContext = createContext(null);
 
 const ModalProvider = ({ children }) => {
@@ -66,7 +65,6 @@ const useModal = () => {
 const Modal = ({ open, onClose, title, description, children }) => {
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogTrigger asChild></DialogTrigger>
       <DialogContent className="sm:max-w-[825px]">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>

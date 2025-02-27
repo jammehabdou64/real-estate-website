@@ -13,6 +13,7 @@ import {
 export const navItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: BarChart },
   { name: "Companies", href: "/admin/companies", icon: Users },
+  { name: "Users", href: "/admin/users", icon: Users },
   { name: "Properties", href: "/admin/properties", icon: Calendar },
   { name: "Property Types", href: "/admin/property-types", icon: UserCog },
   { name: "Agents", href: "/admin/agents", icon: Microscope },

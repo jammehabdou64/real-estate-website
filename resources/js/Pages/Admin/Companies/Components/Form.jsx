@@ -1,17 +1,25 @@
 import React, { useEffect } from "react";
 import AppForm from "@/Components/AppForm";
 import FormGroupInput from "@/Components/FormGroupInput";
+import FormGroupTextarea from "@/Components/FormGroupTextarea";
+import FormGroupImage from "@/Components/FormGroupImage";
 import { Button } from "../../../../Components/ui/button";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 
-const Form = ({ submitHandler, formData }) => {
-  const { data, setData, errors, post, patch, reset } = useForm({
+const Form = ({ formData, closeForm }) => {
+  const { errors } = usePage().props;
+
+  const { data, setData, reset } = useForm({
     name: "",
     email: "",
     primary_phone: "",
     secondary_phone: "",
     location: "",
     website: "",
+    status: "",
+    description: "",
+    logo: "",
   });
 
   useEffect(() => {
@@ -22,8 +30,24 @@ const Form = ({ submitHandler, formData }) => {
       secondary_phone: formData?.secondary_phone || "",
       location: formData?.location || "",
       website: formData?.website || "",
+      description: formData.description || "",
     });
   }, [formData]);
+
+  const submitHandler = (e) => {
+    const url = formData
+      ? `/admin/companies/${formData.id}`
+      : "/admin/companies";
+    const method = formData ? "patch" : "post";
+    e.preventDefault();
+
+    router[method](url, data, {
+      onSuccess: () => {
+        reset();
+        closeForm(false);
+      },
+    });
+  };
 
   const onChangeHandler = (e) => {
     return setData({ ...data, [e.target.name]: e.target.value });
@@ -84,10 +108,30 @@ const Form = ({ submitHandler, formData }) => {
           error={errors.website}
           value={data.website}
         />
+        <div className="col-span-2">
+          <FormGroupTextarea
+            label="Description"
+            id="description"
+            name="description"
+            onChange={onChangeHandler}
+            error={errors.description}
+            value={data.description}
+          />
+        </div>
+        <div className="col-span-2">
+          <FormGroupImage
+            id="Image"
+            label="Image"
+            value={data.logo}
+            name="logo"
+            error={errors.logo}
+            onChange={(file) => setData({ ...data, logo: file })}
+          />
+        </div>
       </div>
-      <div className="py-2">
-        <Button>Submit</Button>
-      </div>
+      {/* <div className="py-1"> */}
+      <Button>Submit</Button>
+      {/* </div> */}
     </AppForm>
   );
 };

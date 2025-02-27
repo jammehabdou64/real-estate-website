@@ -14,6 +14,7 @@ export class PropertiesController {
    */
   async index(req: Request, res: Response, next: Next) {
     //
+    return res.inertia("Admin/Properties/Index", { users: [] });
   }
 
   /**

@@ -16,5 +16,6 @@ export class RouteServiceProvider extends ServiceProvider {
   public boot(): void {
     loadRoute("api");
     loadRoute("web");
+    loadRoute("admin");
   }
 }

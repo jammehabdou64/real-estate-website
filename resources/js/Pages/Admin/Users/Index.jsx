@@ -10,7 +10,7 @@ import EditCompany from "./Components/Edit";
 import AppCard from "@/Components/AppCard";
 import { Button } from "@/Components/ui/button";
 import { Edit, Plus } from "lucide-react";
-const Companies = ({ companies }) => {
+const Users = ({ users }) => {
   const [open, setOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [companyData, setCompanyData] = useState(null);
@@ -25,8 +25,8 @@ const Companies = ({ companies }) => {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        title="Add New Company"
-        description="A Enter the company information below"
+        title="Add New User"
+        description="A Enter the user's information below"
       >
         <CreateCompany closeForm={setOpen} />
       </Modal>
@@ -39,9 +39,9 @@ const Companies = ({ companies }) => {
         <EditCompany closeForm={setEditOpen} companyData={companyData} />
       </Modal>
 
-      <PageHeader title="Companies">
+      <PageHeader title="Users">
         <Button onClick={() => setOpen(true)} className="flex items-center">
-          <Plus className="mr-1 h-4 w-4" /> Add Company
+          <Plus className="mr-1 h-4 w-4" /> Add User
         </Button>
       </PageHeader>
       <div className="">
@@ -52,34 +52,31 @@ const Companies = ({ companies }) => {
               "Name",
               "Email",
               "Phone",
-              "Secondary Phone",
-              "Location",
-              "Website",
-              "description",
+              "address",
+              "role",
               "Status",
               "Actions",
             ]}
           >
-            {companies?.data.map((company) => (
-              <AppTr key={company.id}>
+            {users?.data?.map((user) => (
+              <AppTr key={user.id}>
                 <AppTd>1</AppTd>
-                <AppTd>{company.name}</AppTd>
-                <AppTd>{company.email}</AppTd>
-                <AppTd>{company.primary_phone}</AppTd>
-                <AppTd>{company.secondary_phone}</AppTd>
-                <AppTd>{company.location}</AppTd>
-                <AppTd>{company.website}</AppTd>
-                <AppTd>{company.description}</AppTd>
+                <AppTd>{user.name}</AppTd>
+                <AppTd>{user.email}</AppTd>
+                <AppTd>{user.phone}</AppTd>
+                <AppTd>{user.address}</AppTd>
+                <AppTd>{user.role}</AppTd>
+                <AppTd>{user.status}</AppTd>
                 <AppTd>
-                  {/* {company.status} */}
+                  {/* {user.status} */}
                   <span
                     className={`px-2 py-1 rounded-full text-xs ${
-                      company.status === "Active"
+                      user.status === "Active"
                         ? "bg-green-100 text-green-800"
                         : "bg-blue-100 text-blue-800"
                     }`}
                   >
-                    {company.status}
+                    {user.status}
                   </span>
                 </AppTd>
                 <AppTd>
@@ -105,4 +102,4 @@ const Companies = ({ companies }) => {
   );
 };
 
-export default Companies;
+export default Users;

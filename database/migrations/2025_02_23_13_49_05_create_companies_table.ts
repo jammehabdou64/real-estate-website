@@ -5,6 +5,7 @@ export class Migration {
       table.id();
       table.string("name").unique();
       table.string("email").unique();
+      table.unsignedBigInteger("user_id");
       table.string("primary_phone").unique();
       table.string("secondary_phone").nullable();
       table.string("location");
@@ -13,6 +14,7 @@ export class Migration {
       table.string("website").nullable();
       table.string("description").nullable();
       table.string("status").default("2");
+      table.foreign("user_id").references("id").on("users");
       table.timestamps();
       table.softDeletes();
     });

@@ -29,6 +29,6 @@ export class Migration {
   }
 
   down() {
-    return Schema.dropTable("homes");
+    return Schema.dropTable("properties");
   }
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import Form from "./Form";
 
-const Edit = ({ companyData, closeForm }) => {
+const Edit = ({ userData, closeForm }) => {
   return (
     <div>
-      <Form formData={companyData} closeForm={closeForm} />
+      <Form formData={userData} closeForm={closeForm} />
     </div>
   );
 };

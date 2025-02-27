@@ -4,16 +4,15 @@ export class Migration {
     return Schema.create("users", (table) => {
       table.id();
       table.string("name");
-      table.unsignedBigInteger("company_id").nullable();
       table.string("email").unique();
       table.string("password");
-      table.string("location");
+      table.string("address").nullable();
       table.string("phone");
       table.string("slug").unique().nullable();
       table.string("email_verified").nullable();
-      table.string("avatar").nullable().default("avatar.png");
-      table.string("role").default("2");
-      table.string("status").default("2");
+      table.string("avatar").nullable();
+      table.string("role").default("2").nullable();
+      table.string("status").default("2").nullable();
       table.timestamps();
       table.softDeletes();
     });

@@ -14,6 +14,7 @@ export class PropertyTpesController {
    */
   async index(req: Request, res: Response, next: Next) {
     //
+    return res.inertia("Admin/Property-Types/Index", { users: [] });
   }
 
   /**

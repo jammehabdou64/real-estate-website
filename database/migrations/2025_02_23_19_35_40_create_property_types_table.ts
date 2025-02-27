@@ -11,6 +11,6 @@ export class Migration {
   }
 
   down() {
-    return Schema.dropTable("apartments");
+    return Schema.dropTable("property_types");
   }
 }

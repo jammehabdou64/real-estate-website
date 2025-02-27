@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ModalProvider } from "../Modal";
+import { ModalProvider, useModal } from "../Modal";
 import { ThemeProvider } from "@/Providers/ThemeProvider";
 import { usePage } from "@inertiajs/react";
 import Toast from "../Toast";
@@ -21,13 +21,13 @@ const AuthLayout = ({ children }) => {
   }, [flash]);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <Toast
-        show={showToast}
-        closeToast={() => setShowToast(false)}
-        message={flash?.message}
-      />
-      <ModalProvider>
+    <ModalProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Toast
+          show={showToast}
+          closeToast={() => setShowToast(false)}
+          message={flash?.message}
+        />
         <div className="flex min-h-screen">
           <AppSidebar />
           <div className="flex-1">
@@ -37,8 +37,8 @@ const AuthLayout = ({ children }) => {
             <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">{children}</div>
           </div>
         </div>
-      </ModalProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </ModalProvider>
   );
 };
 

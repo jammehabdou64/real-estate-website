@@ -1,13 +1,17 @@
 import { bcrypt, Auth } from "jcc-express-mvc";
 import { Request, Response, Next } from "jcc-express-mvc/core/http";
 import { User } from "@/Model/User";
+import { Inject } from "jcc-express-mvc/lib/Dependancy";
+import { UserRepository } from "app/Repositories/UserRepository";
+
+@Inject()
 export class UsersController {
   //
 
+  constructor(private user: UserRepository) {}
+
   async index(req: Request, res: Response, next: Next) {
-    return res.json({
-      message: await User.all(),
-    });
+    return res.inertia("Admin/Users/Index", { users: [] });
   }
 
   //
