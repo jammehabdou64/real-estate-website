@@ -21,8 +21,8 @@ const Form = ({ formData, closeForm }) => {
     setData({
       name: formData?.name || "",
       email: formData?.email || "",
-      phone: formData?.primary_phone || "",
-      address: formData?.secondary_phone || "",
+      phone: formData?.phone || "",
+      address: formData?.address || "",
       status: formData?.status || "",
     });
   }, [formData]);
@@ -94,9 +94,7 @@ const Form = ({ formData, closeForm }) => {
           items={["Active", "Inactive"]}
         />
       </div>
-      {/* <div className="py-1"> */}
       <Button>Submit</Button>
-      {/* </div> */}
     </AppForm>
   );
 };

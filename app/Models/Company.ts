@@ -1,4 +1,5 @@
 import { Model } from "jcc-eloquent";
+import { Str } from "jcc-express-mvc/core/Str";
 
 export class Company extends Model {
   //
@@ -15,7 +16,7 @@ export class Company extends Model {
   static booted() {
     //
     this.saving((data) => {
-      data["slug"] = `${data.name}`.replace(/\s/g, "-").trim().toLowerCase();
+      data.slug = Str.slug(data.name || "");
     });
   }
 }

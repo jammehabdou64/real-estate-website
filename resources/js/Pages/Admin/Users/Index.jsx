@@ -5,18 +5,18 @@ import AppTable from "@/Components/AppTable";
 import AppTd from "@/Components/AppTd";
 import AppTr from "@/Components/AppTr";
 import Modal from "@/Components/Modal";
-import CreateCompany from "./Components/Create";
-import EditCompany from "./Components/Edit";
+import CreateUser from "./Components/Create";
+import EditUser from "./Components/Edit";
 import AppCard from "@/Components/AppCard";
 import { Button } from "@/Components/ui/button";
 import { Edit, Plus } from "lucide-react";
 const Users = ({ users }) => {
   const [open, setOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-  const [companyData, setCompanyData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-  const EditCompanyHandler = (data) => {
-    setCompanyData(data);
+  const EditUserHandler = (data) => {
+    setUserData(data);
     setEditOpen(true);
   };
 
@@ -28,7 +28,7 @@ const Users = ({ users }) => {
         title="Add New User"
         description="A Enter the user's information below"
       >
-        <CreateCompany closeForm={setOpen} />
+        <CreateUser closeForm={setOpen} />
       </Modal>
 
       <Modal
@@ -36,7 +36,7 @@ const Users = ({ users }) => {
         onClose={() => setEditOpen(false)}
         title="Edit Company"
       >
-        <EditCompany closeForm={setEditOpen} companyData={companyData} />
+        <EditUser closeForm={setEditOpen} userData={userData} />
       </Modal>
 
       <PageHeader title="Users">
@@ -84,7 +84,7 @@ const Users = ({ users }) => {
                     <a
                       href="#"
                       className="text-indigo-600 hover:text-indigo-900"
-                      onClick={() => EditCompanyHandler(company)}
+                      onClick={() => EditUserHandler(user)}
                     >
                       Edit
                     </a>

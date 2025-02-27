@@ -1,4 +1,5 @@
 import { Model } from "jcc-eloquent";
+import { Str } from "jcc-express-mvc/core/Str";
 
 export class User extends Model {
   //
@@ -10,4 +11,10 @@ export class User extends Model {
     5: "Admin",
     6: "Super-Admin",
   };
+
+  static booted(): void {
+    this.saving((user) => {
+      user.slug = Str.slug(user.name || "");
+    });
+  }
 }

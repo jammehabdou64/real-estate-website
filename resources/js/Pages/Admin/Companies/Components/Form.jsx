@@ -30,7 +30,7 @@ const Form = ({ formData, closeForm }) => {
       secondary_phone: formData?.secondary_phone || "",
       location: formData?.location || "",
       website: formData?.website || "",
-      description: formData.description || "",
+      description: formData?.description || "",
     });
   }, [formData]);
 

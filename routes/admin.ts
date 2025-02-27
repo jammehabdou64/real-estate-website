@@ -26,9 +26,9 @@ Route.prefix("/admin").group((Route) => {
 
   Route.group((Route) => {
     Route.get("/users", [UsersController, "index"]);
-    Route.get("/users/create", [UsersController, "create"]);
+    // Route.get("/users/create", [UsersController, "create"]);
     Route.post("/users", [UsersController, "store"]);
-    Route.get("/users/{user}/edit", [UsersController, "edit"]);
+    // Route.get("/users/{user}/edit", [UsersController, "edit"]);
     Route.patch("/users/{user}", [UsersController, "update"]);
     Route.delete("/users/{user}", [UsersController, "destroy"]);
   });

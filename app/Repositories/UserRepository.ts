@@ -4,7 +4,7 @@ import { Request } from "jcc-express-mvc/core/http";
 export class UserRepository {
   //
   async paginate(req: Request, perpage: number) {
-    return User.paginate(req, perpage);
+    return User.latest().paginate(req, perpage);
   }
 
   //
