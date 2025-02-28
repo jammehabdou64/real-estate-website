@@ -1,3 +1,5 @@
+import { Property } from "@/Model/Property";
+import { PropertyType } from "@/Model/PropertyType";
 import { Request, Response, Next } from "jcc-express-mvc/core/http";
 
 export class PropertiesController {
@@ -14,7 +16,10 @@ export class PropertiesController {
    */
   async index(req: Request, res: Response, next: Next) {
     //
-    return res.inertia("Admin/Properties/Index", { users: [] });
+    return res.inertia("Admin/Properties/Index", {
+      properties: await Property.latest().paginate(req, 15),
+      propertyType: await PropertyType.all(),
+    });
   }
 
   /**

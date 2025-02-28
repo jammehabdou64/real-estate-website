@@ -3,7 +3,6 @@ export class Migration {
   up() {
     return Schema.create("properties", (table) => {
       table.id();
-      table.timestamps();
       table.unsignedBigInteger("user_id").nullable();
       table.unsignedBigInteger("company_id");
       table.unsignedBigInteger("property_type_id");
@@ -21,9 +20,10 @@ export class Migration {
       table.string("slug").unique().nullable();
       table.string("status").default("2");
       table.string("image").nullable();
+      table.text("description").nullable();
       table.foreign("company_id").references("id").on("companies");
       table.foreign("property_type_id").references("id").on("property_types");
-      table.text("description").nullable();
+      table.timestamps();
       table.softDeletes();
     });
   }

@@ -54,7 +54,7 @@ Route.prefix("/admin").group((Route) => {
 
   //
   Route.group((Route) => {
-    Route.get("/properties", "index");
+    Route.get("/properties", [PropertiesController, "index"]);
     Route.get("/properties/create", [PropertiesController, "create"]);
     Route.post("/properties", [PropertiesController, "store"]);
     Route.get("/properties/{company}/edit", [PropertiesController, "edit"]);
