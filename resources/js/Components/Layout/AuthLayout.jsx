@@ -34,7 +34,9 @@ const AuthLayout = ({ children }) => {
             <div className="flex h-16 items-center justify-end border-b px-4">
               <ThemeToggle />
             </div>
-            <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">{children}</div>
+            <div className="flex-1 bg-gray-100 dark:bg-slate-950 h-full space-y-4 p-4 md:p-8 pt-6">
+              {children}
+            </div>
           </div>
         </div>
       </ThemeProvider>

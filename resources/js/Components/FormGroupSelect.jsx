@@ -10,13 +10,20 @@ const FormGroupSelect = ({
   items = [],
   title = "",
   text = "",
+  optionValue,
   ...props
 }) => {
   return (
     <div className="col-span-1">
       <AppLabel value={label} forId={id} />
       <div className={label ? "mt-1" : "mt-0"}>
-        <AppSelectInput items={items} title={title} text={text} {...props} />
+        <AppSelectInput
+          items={items}
+          title={title}
+          text={text}
+          {...props}
+          optionValue={optionValue}
+        />
       </div>
       <AppInputError message={error} />
     </div>

@@ -60,9 +60,9 @@ const Companies = ({ companies }) => {
               "Actions",
             ]}
           >
-            {companies?.data.map((company) => (
+            {companies?.data.map((company, index) => (
               <AppTr key={company.id}>
-                <AppTd>1</AppTd>
+                <AppTd>{index + 1}</AppTd>
                 <AppTd>{company.name}</AppTd>
                 <AppTd>{company.email}</AppTd>
                 <AppTd>{company.primary_phone}</AppTd>

@@ -58,9 +58,9 @@ const Users = ({ users }) => {
               "Actions",
             ]}
           >
-            {users?.data?.map((user) => (
+            {users?.data?.map((user, index) => (
               <AppTr key={user.id}>
-                <AppTd>1</AppTd>
+                <AppTd>{index + 1}</AppTd>
                 <AppTd>{user.name}</AppTd>
                 <AppTd>{user.email}</AppTd>
                 <AppTd>{user.phone}</AppTd>

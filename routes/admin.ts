@@ -38,12 +38,15 @@ Route.prefix("/admin").group((Route) => {
     Route.get("/property-types", [PropertyTpesController, "index"]);
     Route.get("/property-types/create", [PropertyTpesController, "create"]);
     Route.post("/property-types", [PropertyTpesController, "store"]);
-    Route.get("/property-types/{property}/edit", [
+    Route.get("/property-types/{propertyType}/edit", [
       PropertyTpesController,
       "edit",
     ]);
-    Route.put("/property-types/{property}", [PropertyTpesController, "update"]);
-    Route.delete("/property-types/{property}", [
+    Route.patch("/property-types/{propertyType}", [
+      PropertyTpesController,
+      "update",
+    ]);
+    Route.delete("/property-types/{propertyType}", [
       PropertyTpesController,
       "destroy",
     ]);

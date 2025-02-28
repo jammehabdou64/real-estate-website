@@ -1,8 +1,13 @@
 import { Company } from "@/Model/Company";
 import { CompanyRequest } from "@/Request/CompanyRequest";
+import { UserRepository } from "app/Repositories/UserRepository";
 import { Request, Response, Next } from "jcc-express-mvc/core/http";
+import { Inject } from "jcc-express-mvc/lib/Dependancy";
 
+@Inject()
 export class CompaniesController {
+  constructor(private user: UserRepository) {}
+
   /**
    *@access public
    * @return  Express Request Response
@@ -17,12 +22,10 @@ export class CompaniesController {
   async index(req: Request, res: Response, next: Next) {
     //
 
-    // return res.json({ msg: await Company.paginate(req, 10) });
     return res.inertia("Admin/Companies/Index", {
-      companies: await Company.paginate(req, 10),
+      companies: await Company.latest().paginate(req, 10),
+      users: await this.user.chunck(),
     });
-    // console.log("object");
-    // return res.json({ message: "Companies Index" });
   }
 
   /**

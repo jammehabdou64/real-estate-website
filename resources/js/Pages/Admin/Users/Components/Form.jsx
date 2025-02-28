@@ -9,6 +9,10 @@ import { router } from "@inertiajs/react";
 const Form = ({ formData, closeForm }) => {
   const { errors } = usePage().props;
 
+  const status = [
+    { name: "Active", value: 2 },
+    { name: "Inactive", value: 3 },
+  ];
   const { data, setData, reset } = useForm({
     name: "",
     email: "",
@@ -91,7 +95,10 @@ const Form = ({ formData, closeForm }) => {
           onChange={onChangeHandler}
           error={errors.status}
           value={data.status}
-          items={["Active", "Inactive"]}
+          title="Select Status"
+          optionValue={"value"}
+          text="name"
+          items={status}
         />
       </div>
       <Button>Submit</Button>
